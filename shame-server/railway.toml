@@ -1,0 +1,26 @@
+[build]
+builder = "nixpacks"
+buildCommand = "bun install"
+
+[deploy]
+startCommand = "bun start"
+# healthcheckPath = "/health"
+healthcheckTimeout = 10
+restartPolicyType = "on_failure"
+numReplicas = 1
+
+[phases.setup]
+nixPkgs = ["bun"]
+
+[[services]]
+internal_port = 3000
+protocol = "http"
+
+[[mounts]]
+source = "/data"
+destination = "/app/data"
+type = "persistent"
+
+[variables]
+PORT = "3000"
+NODE_ENV = "production"

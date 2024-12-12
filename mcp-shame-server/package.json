@@ -1,0 +1,14 @@
+{
+  "name": "mcp-shame-server",
+  "version": "1.0.0",
+  "type": "module",
+  "bin": {
+    "mcp-shame-server": "./build/index.js"
+  },
+  "scripts": {
+    "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\""
+  },
+  "files": [
+    "build"
+  ]
+}
